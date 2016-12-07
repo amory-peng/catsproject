@@ -14,7 +14,7 @@ class CatRentalRequest < ActiveRecord::Base
   end
 
   def overlapping_approved_requests
-    return unless self.status == "APPROVED"
+    return if self.status == "DENIED"
     cat_rental_requests = CatRentalRequest.where(cat_id: self.cat_id, status: "APPROVED")
 
     if cat_rental_requests.nil?
