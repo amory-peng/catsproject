@@ -1,0 +1,50 @@
+<table>
+  <%= cat = @cat %>
+    <tr>
+      <td>name: </td>
+      <td><%= cat.name %></td>
+    </tr>
+
+
+    <tr>
+      <td>birthday: </td>
+      <td><%= cat.birth_date %></td>
+    </tr>
+
+    <tr>
+      <td>color: </td>
+      <td><%= cat.color %></td>
+    </tr>
+
+    <tr>
+      <td>sex: </td>
+      <td><%= cat.sex %></td>
+    </tr>
+
+
+    <tr>
+      <td>description: </td>
+      <td><%= cat.description %></td>
+    </tr>
+
+    <tr>
+      <td>Rental Dates</td>
+      <td><% @cat_rental_requests.each do |request| %>
+        <tr>
+          <td>Start Date: </td>
+          <td><%= request.start_date %></td>
+
+          <td>End Date: <%= request.end_date %></td>
+          <td>Current Status: <%= request.status %></td>
+          <% if request.status == "PENDING" %>
+            <td><%= button_to 'approve', approve_request_url(request), method: :patch %></td>
+            <td><%= button_to 'deny', deny_request_url(request), method: :patch %></td>
+
+          <% end %>
+        </tr>
+      <% end %>
+    </tr>
+
+</table>
+
+<%= link_to 'back to index', cats_url %>

@@ -1,0 +1,13 @@
+<h1>All cats!</h1>
+
+
+<ul>
+    <% @cats.each do |cat| %>
+    <li>
+      <%= link_to "#{cat.name}", cat_url(cat)%>
+    </li>
+    <% end %>
+</ul>
+
+<%= link_to 'add a cat!', new_cat_url  %>
+<%= link_to 'rent a cat!', new_cat_rental_request_url  %>
